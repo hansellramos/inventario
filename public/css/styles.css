@@ -142,3 +142,34 @@ tr.group {
 .hidden {
     display: none;
 }
+
+#table.dataTable {
+    margin: initial;
+}
+
+#qr {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+}
+
+#qr #code{
+    text-align: center;
+}
+
+#qr .header {
+    text-align: center;
+    height: 44px;
+    font-size: 18px;
+    padding: 10px;
+}
+
+#qr .close {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
