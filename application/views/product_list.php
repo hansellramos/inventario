@@ -50,6 +50,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             
             <div id="logout">
+                <?php if($account->is_admin){ ?>
+                <?php echo anchor('product/add','Create Product'); ?>
+                <?php } ?>
                 <?php echo anchor('welcome/index','Home'); ?>
                 <?php echo anchor('welcome/logout','Logout'); ?>
             </div>
@@ -121,7 +124,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 showQR: function(id, name) {
                     $('#qr #code').html('');
                     $("#qr .title").html(name);
-                    $('#qr #code').qrcode("<?php echo base_url(); ?>/product/inventory/"+id);
+                    $('#qr #code').qrcode("<?php echo site_url(['product','inventory']); ?>/"+id);
                     $("#qr").show();
                 },
                 // 
@@ -138,8 +141,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         columns: [
                             { title: "", 
                                 render: function(data, type, row){
-                                    console.log(row[1]);
-                                    return '<button type="button" onclick="APP.showQR('+data+',\''+row[1]+'\')">QR</button>';
+                                    return '<button type="button" onclick="APP.showQR('+data+',\''+row[1]+'\')">QR</button>'+
+                                           '<button type="button" onclick="APP.edit('+data+')">Modificar</button>'
+                                    ;
                                 }
                             },
                             { title: "Producto" },
@@ -151,6 +155,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         ],
                         pagingType: "full_numbers"
                     });
+                },
+                edit: function(id) {
+                    window.location = '<?php echo site_url(['product','edit']) ?>/'+id;
                 }
             };
         </script>

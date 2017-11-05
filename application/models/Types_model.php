@@ -24,7 +24,7 @@ class Types_model extends CI_Model {
      * @return Array
      */
     public function get_all_product_types() {
-        return $this->get_all('product_types');
+        return $this->get_all('product_type');
     }  
 }
 
