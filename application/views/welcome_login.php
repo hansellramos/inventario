@@ -39,6 +39,7 @@
                     </label>
                 </div>   
                 <div>
+                    <input type="hidden" name="redirect" id="redirect" value="<?php echo $redirect; ?>">
                     <input type="submit" value="Login" />
                 </div>
                 <?php echo form_close(); ?>

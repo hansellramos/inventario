@@ -4,7 +4,9 @@ function redirect_if_not_login() {
     $CI = get_instance();
     if (!isset($CI->session->userdata['logged_in'])){
         $CI->session->set_flashdata('message', 'You need log in before');
-        redirect('welcome/login');
+        redirect('welcome/login'. 
+            (strpos(current_url(), 'logout') === false ? '?from='.current_url() : '')
+        );
     }
 }
 
