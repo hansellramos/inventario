@@ -156,7 +156,7 @@ tr.group {
     background: #fff;
 }
 
-#qr #code{
+#qr #code, #qr .footer{
     text-align: center;
 }
 

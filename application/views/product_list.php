@@ -47,6 +47,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <span class="close" onclick="$('#qr').hide();">x</span>
                 </div>
                 <div id="code"></div>
+                <div class="footer">                    
+                    <span class="link"><a href="#"></a></span>
+                </div>
             </div>
             
             <div id="logout">
@@ -124,7 +127,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 showQR: function(id, name) {
                     $('#qr #code').html('');
                     $("#qr .title").html(name);
-                    $('#qr #code').qrcode("<?php echo site_url(['product','inventory']); ?>/"+id);
+                    var url = "<?php echo site_url(['product','inventory']); ?>/"+id;
+                    $("#qr .link a").html(url);
+                    $("#qr .link a").attr('href',url);
+                    $('#qr #code').qrcode(url);
                     $("#qr").show();
                 },
                 // 
@@ -142,22 +148,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             { title: "", 
                                 render: function(data, type, row){
                                     return '<button type="button" onclick="APP.showQR('+data+',\''+row[1]+'\')">QR</button>'+
-                                           '<button type="button" onclick="APP.edit('+data+')">Modificar</button>'
+                                           '<button type="button" onclick="APP.edit('+data+')">Modificar</button>'+
+                                           '<button type="button" onclick="APP.inventory('+data+')">Inventario</button>'
                                     ;
                                 }
                             },
                             { title: "Producto" },
                             { title: "Tipo" },
-                            { title: "Cantidad Actual"},
+                            { title: "Cantidad Actual", visible: false },
                         ],
                         columnDefs: [
-                            { "width": "150px", "targets": [0,1,2] }
+                            { "width": "250px", "targets": [0] },
+                            { "width": "120px", "targets": [1,2,3] }
                         ],
                         pagingType: "full_numbers"
                     });
                 },
                 edit: function(id) {
                     window.location = '<?php echo site_url(['product','edit']) ?>/'+id;
+                },
+                inventory: function(id) {
+                    window.location = '<?php echo site_url(['product','inventory']) ?>/'+id;
                 }
             };
         </script>

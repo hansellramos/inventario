@@ -86,4 +86,50 @@ class Product extends CI_Controller {
         
     }
     
+    public function inventory($product_id) {
+        
+        redirect_if_not_login();
+        
+        $data['account'] = $account = $this->session->userdata['logged_in'];
+        
+        $data['product'] = $product = $this->products->one($product_id);
+        
+        if ($this->input->method() == 'post') { 
+            
+            $entry_type = $this->input->post('entry_type');
+            $movement = intval($this->input->post('movement'));
+            if ($entry_type === 'out') {
+                $movement *= -1;
+            }
+            $product->current_quantity += $movement; 
+            
+            $inventory_data = [
+                'product' => $product_id,
+                'in' => $entry_type === 'in' ? $movement : 0,
+                'out' => $entry_type === 'out' ? $movement : 0,
+                'current_quantity' => $product->current_quantity,                
+                'created' => time(),
+                'creator' => $account->id
+            ];
+            $product_data = [
+                'current_quantity' => $product->current_quantity,
+                'modified' => time(),
+                'modifier' => $account->id
+            ];
+            
+            $this->inventory->add($inventory_data);            
+            $this->products->update($product_id, $product_data);
+            $this->session->set_flashdata('redirect',true);
+            $this->session->set_flashdata('message'
+                    , "Movimiento de producto guardado, Nombre: {$product->name}");
+            
+        }
+        
+        $data['redirect_time'] = $this->config->item('redirect_time');
+        $data['default_inventory_movement'] = $this->config->item('default_inventory_movement');
+        
+        // flush data to view
+        $this->load->view('product_inventory', $data);
+    }
+    
 }

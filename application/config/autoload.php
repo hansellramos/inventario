@@ -136,4 +136,5 @@ $autoload['model'] = array(
     'accounts_model'=>'accounts',
     'products_model'=>'products',
     'types_model'=>'types',
+    'inventory_model'=>'inventory',
 );
