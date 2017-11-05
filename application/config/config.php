@@ -533,3 +533,5 @@ $config['proxy_ips'] = '';
 $config['local_server'] = true;
 
 $config['redirect_time'] = 3;
+
+$config['default_inventory_movement'] = 1;

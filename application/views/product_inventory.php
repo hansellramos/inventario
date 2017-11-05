@@ -38,7 +38,8 @@
                     <?php echo form_open('',['onsubmit'=>'return APP.validate();']); ?>
                     <div>
                         <div>
-                            <input type="number" min="0" name="movement" id="movement" value="0">
+                            <input type="number" min="0" name="movement" 
+                                   id="movement" value="<?php echo $default_inventory_movement; ?>">
                         </div>
                         <div>
                             <span>Este movimiento se guardará como: <?php echo "{$account->name} {$account->lastname}" ?></span>
@@ -53,6 +54,7 @@
                 </div>
                 
                 <br />
+                <?php echo anchor('welcome/index','Home'); ?>
                 <?php echo anchor('product/index','Lista de Productos',['class'=>'']); ?>
             </div>
 

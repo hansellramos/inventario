@@ -22,7 +22,10 @@ class Welcome extends CI_Controller {
     public function login() {
 
         redirect_if_login();
-
+        
+        $data = [];
+        $data['redirect'] = $this->input->get('from') ? $this->input->get('from') : '';
+        
         if ($this->input->method() == 'post') {
 
             $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[3]|max_length[200]');
@@ -36,13 +39,14 @@ class Welcome extends CI_Controller {
                         'logged_in', 
                         $this->accounts->one($id)
                     );
-                redirect('welcome/index');
+                redirect($this->input->post('redirect') ? $this->input->post('redirect') :
+                        'welcome/index'
+                        );
             } else {
                 $this->session->set_flashdata('login_error', 'Invalid credentials');
             }
         }
 
-        $data = [];
         $this->load->view('welcome_login', $data);
     }
     

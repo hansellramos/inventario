@@ -126,6 +126,7 @@ class Product extends CI_Controller {
         }
         
         $data['redirect_time'] = $this->config->item('redirect_time');
+        $data['default_inventory_movement'] = $this->config->item('default_inventory_movement');
         
         // flush data to view
         $this->load->view('product_inventory', $data);
