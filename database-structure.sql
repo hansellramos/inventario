@@ -35,16 +35,6 @@ CREATE TABLE `accounts` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `accounts`
---
-
-LOCK TABLES `accounts` WRITE;
-/*!40000 ALTER TABLE `accounts` DISABLE KEYS */;
-INSERT INTO `accounts` VALUES (1,'admin','62ec65bac0a0db4d6f94611eb7ec5a02','User','Admin',1,'2017-10-09 10:35:40');
-/*!40000 ALTER TABLE `accounts` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `products`
 --
 
@@ -69,16 +59,6 @@ CREATE TABLE `products` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `products`
---
-
-LOCK TABLES `products` WRITE;
-/*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,'BRUGAL',1,0,1509680276,1,1509680276,1,0,0),(2,'DYC',1,0,2147483647,1,2147483647,1,0,0),(3,'DYC 8',1,0,2147483647,1,2147483647,1,0,0),(4,'J&B',1,0,2147483647,1,1509903040,1,0,0);
-/*!40000 ALTER TABLE `products` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `types`
 --
 
@@ -92,16 +72,6 @@ CREATE TABLE `types` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `types`
---
-
-LOCK TABLES `types` WRITE;
-/*!40000 ALTER TABLE `types` DISABLE KEYS */;
-INSERT INTO `types` VALUES (1,'product_type','WHISKY'),(2,'product_type','RON'),(3,'product_type','VODKA'),(4,'product_type','GINEBRA'),(5,'product_type','VARIOS');
-/*!40000 ALTER TABLE `types` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -112,4 +82,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-05 12:41:21
+-- Dump completed on 2017-11-05 12:37:09
