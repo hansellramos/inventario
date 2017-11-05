@@ -11,6 +11,11 @@
         <div id="container">
             <h1>Bienvenido <?php echo "$account->name $account->lastname ($account->username)"; ?></h1>
             <div id="body">
+                <?php if($account->is_admin){ ?>
+                <?php echo anchor('account/add','Create Account'); ?>
+                <?php echo anchor('product/add','Create Product'); ?>
+                <?php } ?>
+                <?php echo anchor('product/index','Lista de Productos',['class'=>'']); ?>
             </div>
 
             <div id="logout">
