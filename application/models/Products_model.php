@@ -20,9 +20,9 @@ class Products_model extends CI_Model {
      * @return Array
      */
     public function get_all() {
-        $this->db->select('products.id id, products.name name, type.name type, current_quantity');
+        $this->db->select('products.id id, products.name name, types.name type, current_quantity');
         $this->db->from('products');
-        $this->db->join('type', 'products.product_type = type.id');
+        $this->db->join('types', 'products.product_type = types.id');
         $query = $this->db->get();
         return $query->result();
     }
