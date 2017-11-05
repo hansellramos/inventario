@@ -173,3 +173,33 @@ tr.group {
     right: 10px;
     cursor: pointer;
 }
+
+.vertical-text {
+    padding-left: 30px !important;
+    font-weight: bold;
+    font-size: 18px;
+    writing-mode: sideways-lr;
+    /*text-orientation: upright;*/
+}
+
+.table_section_title {
+    display: none;
+}
+
+.border-top {
+    border-top: none;
+    border-bottom: none;
+    border: none;
+    border-bottom: 1px solid #111;
+    border-left: 1px solid #111;
+}
+
+.search-container {
+    float: right;
+}
+.search-container input[type=date] {
+    width: 184px;
+}
+.search-container span {
+    text-align: right;
+}
