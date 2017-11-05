@@ -120,9 +120,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 },  
                 showQR: function(id, name) {
                     $('#qr #code').html('');
-                    console.log("http://localhost/product/inventory/"+id);
                     $("#qr .title").html(name);
-                    $('#qr #code').qrcode("http://localhost/product/inventory/"+id);
+                    $('#qr #code').qrcode("<?php echo base_url(); ?>/product/inventory/"+id);
                     $("#qr").show();
                 },
                 // 
