@@ -35,6 +35,27 @@ CREATE TABLE `accounts` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `inventory`
+--
+
+DROP TABLE IF EXISTS `inventory`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `inventory` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product` int(11) NOT NULL,
+  `in` int(11) NOT NULL DEFAULT '0',
+  `out` int(11) NOT NULL DEFAULT '0',
+  `current_quantity` int(11) NOT NULL,
+  `creator` int(11) NOT NULL,
+  `created` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_inventory_product_idx` (`product`),
+  CONSTRAINT `fk_inventory_product` FOREIGN KEY (`product`) REFERENCES `products` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `products`
 --
 
@@ -82,4 +103,4 @@ CREATE TABLE `types` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-05 12:37:09
+-- Dump completed on 2017-11-05 14:24:11
