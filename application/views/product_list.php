@@ -32,12 +32,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <thead></thead>
                     <tbody></tbody>
                     <tfoot>
-                        <tr>
-                            <td></td>
-                            <td><input type="text" class="search" id="search-name" placeholder="Buscar Por Nombre"></td>
-                            <td><input type="text" class="search" id="search-product-type" placeholder="Buscar Por Tipo"></td>
-                            <td></td>
-                        </tr>
                     </tfoot>
                 </table>
             </div>
@@ -90,22 +84,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     });
                     $.fn.dataTable.ext.search.push(
                         function( settings, data, dataIndex ) {
-                            var valid = false, filtered = false;
-                            var search_name = $("#search-name").val();
-                            var search_product_type = $("#search-product-type").val();
-                            
-                            // very very very hard filter
-                            if(search_name.length > 0 
-                                    || search_product_type.length > 0
-                                ) {
-                                filtered = true;
-                                if (search_name.length > 0) 
-                                    if(data[0].toLowerCase().indexOf(search_name.toLowerCase()) >= 0) { valid = true; } else {return false; }
-                                if (search_product_type.length > 0)
-                                    if(data[1].toLowerCase().indexOf(search_product_type.toLowerCase()) >= 0) { valid = true; } else {return false; }
-                            }                          
-                            
-                            return !filtered || valid;
+                            return true;
                         }
                     );
                     // Init sites list from data
