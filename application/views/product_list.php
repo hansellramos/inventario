@@ -48,7 +48,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             
             <div id="logout">
                 <?php if($account->is_admin){ ?>
-                <?php echo anchor('product/add','Create Product'); ?>
+                <?php echo anchor('welcome/index','Home'); ?>
+                <?php echo anchor('product/add','Crear Producto'); ?>
+                <?php echo anchor('product/report/inventory','Reporte Inventario'); ?>
                 <?php } ?>
                 <?php echo anchor('welcome/index','Home'); ?>
                 <?php echo anchor('welcome/logout','Logout'); ?>

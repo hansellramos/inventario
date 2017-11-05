@@ -12,8 +12,9 @@
             <h1>Bienvenido <?php echo "$account->name $account->lastname ($account->username)"; ?></h1>
             <div id="body">
                 <?php if($account->is_admin){ ?>
-                <?php echo anchor('account/add','Create Account'); ?>
-                <?php echo anchor('product/add','Create Product'); ?>
+                <?php echo anchor('account/add','Crear Cuenta de Usuario'); ?>
+                <?php echo anchor('product/add','Crear Producto'); ?>
+                <?php echo anchor('product/report/inventory','Reporte Inventario'); ?>
                 <?php } ?>
                 <?php echo anchor('product/index','Lista de Productos',['class'=>'']); ?>
             </div>
