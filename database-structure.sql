@@ -52,8 +52,23 @@ CREATE TABLE `inventory` (
   PRIMARY KEY (`id`),
   KEY `fk_inventory_product_idx` (`product`),
   CONSTRAINT `fk_inventory_product` FOREIGN KEY (`product`) REFERENCES `products` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Temporary table structure for view `inventory_report`
+--
+
+DROP TABLE IF EXISTS `inventory_report`;
+/*!50001 DROP VIEW IF EXISTS `inventory_report`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `inventory_report` AS SELECT 
+ 1 AS `product`,
+ 1 AS `year_week`,
+ 1 AS `day_of_week`,
+ 1 AS `outs`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `products`
@@ -76,7 +91,7 @@ CREATE TABLE `products` (
   PRIMARY KEY (`id`),
   KEY `fk_products_type_idx` (`product_type`),
   CONSTRAINT `fk_products_type` FOREIGN KEY (`product_type`) REFERENCES `types` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,6 +108,24 @@ CREATE TABLE `types` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Final view structure for view `inventory_report`
+--
+
+/*!50001 DROP VIEW IF EXISTS `inventory_report`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `inventory_report` AS select `p`.`id` AS `product`,date_format(from_unixtime(`i`.`created`),'%Y %U') AS `year_week`,date_format(from_unixtime(`i`.`created`),'%w') AS `day_of_week`,sum(`i`.`out`) AS `outs` from (`products` `p` join `inventory` `i` on((`i`.`product` = `p`.`id`))) group by `i`.`product`,`year_week`,`day_of_week` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -103,4 +136,4 @@ CREATE TABLE `types` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-05 14:24:11
+-- Dump completed on 2017-11-05 18:50:42
